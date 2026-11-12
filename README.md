@@ -1,9 +1,9 @@
 # Review-Driven Travel Planning ｜ 评分驱动的旅行规划
 
 A reusable method for planning self-drive trips from **verifiable review data** instead of
-blog roundups — plus two fully worked Australian road trips built with it.
+blog roundups — plus three fully worked Australian road trips built with it.
 
-用**可核验的评分数据**（而不是攻略文章）规划自驾行程的一套方法，以及用它做出来的两趟完整澳洲公路旅行。
+用**可核验的评分数据**（而不是攻略文章）规划自驾行程的一套方法，以及用它做出来的三趟完整澳洲公路旅行。
 
 ---
 
@@ -33,13 +33,13 @@ a dedicated space** — any one missing is recorded as unconfirmed.
 住宿另有硬闸门：两人独立房间、**房型层面**确认独立浴室、非 hostel/dorm/共用浴室、免费停车
 **三项齐全**（免费 / 场地内 / 专用车位），缺一项即记为未确认。
 
-**→ Read the method: [`METHOD.md`](METHOD.md)** — 17 sections, English body with a
+**→ Read the method: [`METHOD.md`](METHOD.md)** — 18 sections, English body with a
 one-page Chinese digest at the top.
-**→ 方法全文见 [`METHOD.md`](METHOD.md)**，共 17 节，正文英文、开头有一页中文摘要。
+**→ 方法全文见 [`METHOD.md`](METHOD.md)**，共 18 节，正文英文、开头有一页中文摘要。
 
 ---
 
-## The trips ｜ 两趟行程
+## The trips ｜ 三趟行程
 
 ### NSW / QLD 2026 · 7 days, 6 nights ｜ 七天六晚
 
@@ -58,6 +58,24 @@ conflicts resolved, and per-day clothing and footwear notes.
 - 🌐 [Web ｜ 网页版](docs/nsw-final.html) · 📄 [PDF](docs/nsw-final.pdf)
 - 🗒 [Annotated earlier version ｜ 带批注的旧版（留档）](docs/nsw.html)
 
+### QLD Christmas 2026 · 8 days, 7 nights ｜ 圣诞八天七晚
+
+`Brisbane → Bunya Mountains → Bundaberg → Agnes Water / 1770 → Bundaberg (×3) → Childers → Brisbane`
+24–31 Dec 2026 · two adults · own car
+
+The booking-and-confirmation example. Every stay and tour booked, with a status ledger
+(✅ confirmed · ⚠ one step left · ☐ to arrange · ? undecided). It also has a holiday-day
+food plan driven by in-room appliances, one anchor brunch per day, and a dated pre-departure
+checklist. The lessons are in METHOD §18.
+
+订房与确认的样板。住宿和团全部订完，附状态清单（✅ 已确认 · ⚠ 还差一步 · ☐ 待约 · ? 未定）。
+还有按房间电器安排的假日吃饭方案、每天一顿正经早午餐，以及按日期排好的出行前清单。
+教训沉淀在 METHOD §18。
+
+- 🌐 [Web ｜ 网页版](docs/qld-xmas-2026.html) · 📄 [PDF](docs/qld-xmas-2026.pdf)
+- Public copy: booking numbers, personal names and home suburb removed.
+  公开版已去掉订单号、真实姓名和住址。
+
 ### Cairns / Far North Queensland 2026 · 10 days ｜ 十天
 
 `Cairns → Port Douglas → Cape Tribulation → Yungaburra → Cairns`
@@ -73,7 +91,7 @@ The first trip the method was developed on.
 ## Repository layout ｜ 仓库结构
 
 ```text
-METHOD.md    the method itself — 17 sections ｜ 方法本体，17 节
+METHOD.md    the method itself — 18 sections ｜ 方法本体，18 节
 README.md    this file ｜ 本文件
 docs/        published site (GitHub Pages root); index.html is the hub
              ｜ 发布站点，index.html 是双语索引首页
