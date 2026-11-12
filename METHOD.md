@@ -1,10 +1,10 @@
 # Road-trip Agent Method ｜ 评分驱动的公路旅行规划方法
 
-This file captures the reusable decision logic developed while planning two Australian
+This file captures the reusable decision logic developed while planning three Australian
 road trips. The goal is to make the planner behave like an optimisation agent rather than
 a town-by-town checklist generator.
 
-本文是两趟澳洲自驾（Cairns 2026、NSW 2026）中沉淀下来的可复用决策逻辑。**目标是让规划者
+本文是三趟澳洲自驾（Cairns 2026、NSW 2026、QLD 圣诞 2026）中沉淀下来的可复用决策逻辑。**目标是让规划者
 像一个做优化的 agent，而不是逐镇罗列清单的人。** 正文为英文，下面是中文摘要——读完这一页
 就能知道整套方法在管什么。
 
@@ -51,6 +51,15 @@ a town-by-town checklist generator.
 - **在线订位系统没有 ≠ 商家不做**：自租常常只能打电话（§17.7）。
 - **同一个来源自相矛盾时，两条都写出来**，交给电话去解决，别自己挑一个当事实（§17.8）。
 - **逐日建议要用「当天待在哪」的气象站**，不是过夜镇的站（§17.9）。
+
+### 订完之后（§18，2026-11 圣诞行程）
+
+- **平台写 Confirmed ≠ 商家确认了**：商家留言说没确认，就以留言为准，打电话才算数（§18.1）。
+- **付了钱 ≠ 办完了**：免责书这类每人一份的步骤，要每人都有一封确认邮件才算完；没邮件就写「未查到」（§18.2）。
+- **公众假日看房间电器**：水壶、微波炉、冰箱逐家核实，关门那几天的吃的在最后一个营业日买齐（§18.4）。
+- **每天一顿正经饭**，其余标成备选，别把清单写成任务（§18.5）。
+- **聊天里说的待办，必须写进交付文件的清单**（§18.8）。
+- **公开版单独构建**，在最终渲染的 HTML 和 PDF 文字上 grep 订单号、人名、住址（§18.10）。
 
 ---
 
@@ -522,3 +531,121 @@ that is both near the corridor's turn *and* worth stopping in.
 structural constraint and put the real menu on the table — accept a bed-only night,
 accept more driving, or do not split at all. This is §16.1 applied to a single day
 instead of the whole route.
+
+## 18. Lessons from the 2026-11 Christmas booking-and-confirmation pass
+
+A third trip — Brisbane → Bunya Mountains → Bundaberg / Agnes Water → Brisbane,
+24–31 Dec 2026, 8 days 7 nights — was taken from plan to fully booked. The planning rules
+held. What broke was everything **after** "booked": confirmation states, per-person
+waivers, holiday trading, and the build itself. Ten rules came out of it.
+
+### 18.1 A platform's "Confirmed" is the platform's status, not the property's
+
+Booking.com showed Villa Mirasol Motor Inn (25 Dec) as **Confirmed** from the minute it
+was booked, and sent a "your booking is confirmed" email. The same day the motel posted a
+message in the Booking inbox: "this reservation is **NOT YET CONFIRMED** … please contact
+the motel direct". Three days later the traveller saw "Confirmed" on the booking page and
+read it as resolved. Nothing had changed. The status had been there all along.
+
+**Rule:** when the platform's status and the property's own message disagree, the
+property's message wins. Only a property reply or a phone call closes it. In the
+deliverable, mark the item ⚠ and say *why* "Confirmed" does not count.
+
+### 18.2 Paid is not done: per-person steps have per-person evidence
+
+The reef tour was paid (deposit) and still showed **PENDING**. The operator requires a
+separate waiver from *each* participant. The evidence that closed it was two separate
+"Waiver (for &lt;name&gt;) is signed and filed" emails, one per person. The
+second operator's waiver (LARC) produced no email at all. So its status is **"not found"**,
+not "probably signed".
+
+**Rule:** track per-person steps per person. Count a step as done only when an artefact
+exists for each person. If the system sends no artefact, say so. Do not infer completion.
+
+### 18.3 Two bookings at one property are not a duplicate until the dates say so
+
+An inbox sweep showed two confirmations for Bundaberg Spanish Motor Inn on the same day.
+They were 26→27 and 28→31, with a night in Agnes Water in between. Calling them a
+duplicate would have triggered a cancellation of a real night.
+
+**Rule:** before flagging a duplicate booking, line up the check-in and check-out dates
+against the itinerary. "Same property, same day" is not a match.
+
+### 18.4 Holiday dates turn room appliances into a planning input
+
+On 25–26 Dec most shops and many restaurants are closed. The fallback is food you carry,
+and that depends on what the room has. Kettle, microwave and fridge were verified per
+property. At one property none of the three could be found, so it was written as "not
+found", not assumed. Then:
+
+- Buy everything on the last normal trading day (here 23 Dec).
+- Front-load self-catering on the closed days.
+- Pack fresh produce that keeps without cooking, so the closed days still have fibre.
+- Put every chosen restaurant on a mid-December phone list to check holiday hours.
+
+**Rule:** for any trip touching public holidays, add an appliances column to the
+accommodation table and a food plan for the closed days. Treat each restaurant's
+holiday trading as unverified until someone calls.
+
+### 18.5 One anchor meal a day; everything else is a backup
+
+The first restaurant list put a booked or recommended venue at almost every meal. The
+traveller's verdict was "too much". The version that stuck has one proper brunch per day,
+with stars, cuisine, Google link and a two-person price. Dinner is "eat whatever". The
+other venues stay in the document, marked as backups, and are not deleted.
+
+**Rule:** default to one anchor meal per day and say what the others are. A dense list
+reads as an obligation, not as options.
+
+### 18.6 Price the risk on the riskiest night with a live availability scan
+
+For the unconfirmed Christmas-night motel the useful question was "what happens if it
+falls through?". A same-date search answered it: **16 properties** still bookable, most
+with free cancellation. The unconfirmed motel itself still had rooms. So overbooking was
+unlikely. The real risk was arriving to find no record.
+
+**Rule:** for the one night that has no fallback (a public holiday, a remote town), run
+the availability scan. A free-cancellation hedge booking costs nothing as long as its
+cancellation deadline goes into the checklist.
+
+### 18.7 Operator scam alerts belong in the deliverable
+
+One tour operator warned that WhatsApp messages carrying **real booking details** were
+asking guests to "validate" and pay through outside links. Booking data leaks. The
+deliverable should state the channel each booking is paid through and what never
+happens (no extra payment by chat or unsolicited link).
+
+**Rule:** when an operator issues a fraud warning, add one line to that booking's entry
+naming the legitimate channel.
+
+### 18.8 Anything said in chat as a to-do must land in the checklist
+
+After a chat answer listing every remaining task, the traveller asked "did you write
+these into the checklist?" Three were missing: the backup motel, where the waiver link
+lives, and the fresh-produce shopping. The document is what goes in the car. The chat
+does not.
+
+**Rule:** after any reply that tells the traveller to *do* something, diff it against
+the deliverable's checklist before ending the turn.
+
+### 18.9 Build inputs must not live in a directory the OS purges
+
+The build ran from a temp scratch directory. Between sessions, macOS cleaned part of it.
+A route-geometry file and the CSS template it extracted styles from both vanished.
+Recovery worked only by luck: the geometry was re-queried from OSRM, and the CSS was cut
+back out of the last rendered HTML.
+
+**Rule:** keep every build input in the repo or another durable directory. If a build
+step fetches an input, make the step able to re-fetch it when the file is missing.
+
+### 18.10 The public copy is a separate build, checked on the rendered output
+
+Booking numbers, real names and the home suburb must not reach a public repo. A first
+text-replacement pass caught them in prose but **missed the home suburb inside a Google
+Maps query parameter**. Grepping the rendered HTML found it. The PDF's extracted text
+was then grepped too.
+
+**Rule:** sanitise the final rendered artefact, not the sources. Grep both HTML and PDF
+text for every identifier class: long digit runs, booking-code patterns, personal names,
+home locality. Status legend for this trip: ✅ booked and confirmed · ⚠ booked, one step
+left · ☐ to arrange · ? undecided, stamped with the date it was checked.
